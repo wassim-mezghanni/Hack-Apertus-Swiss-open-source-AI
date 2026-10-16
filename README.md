@@ -58,18 +58,6 @@ HF_TOKEN=hf_xxx docker compose run --rm gpu \
 Downloaded models/datasets persist in the `hf-cache` volume, so Apertus is only
 pulled once. Pick the model with `APERTUS_MODEL` (defaults to the 8B).
 
-## Running on the COMA cluster (primary compute)
-
-Reuses the **`mexa_conda`** env from the author's MEXA thesis (torch +
-transformers + Apertus workarounds already set up on COMA) — no container to
-build. See **`coma/README_COMA.md`** for the full runbook. Quick version:
-
-```bash
-ssh coma
-cd ~/nobackup && git clone <repo-url> swissgov
-export HF_TOKEN=hf_xxx            # if Apertus is gated
-bash swissgov/track_2a/coma/bootstrap_coma.sh   # installs deps + submits smoke test
-sbatch swissgov/track_2a/coma/run_diffalign.sbatch   # full dev run
 ```
 
 Files:
