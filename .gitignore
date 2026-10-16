@@ -46,15 +46,6 @@ track_2a/apertus.sif
 *.pt
 *.bin
 
-# Run artifacts & Large evaluation outputs
-track_2a/logs/
-**/logs/
-*.out
-*.err
-*.jsonl
-*.jsonl.jsonl
-*.tar.gz
-
 # OS / Editor / IDE
 .DS_Store
 **/.DS_Store
@@ -63,5 +54,3 @@ Thumbs.db
 .idea/
 *.swp
 *~
-
-# Allow official submission archive
