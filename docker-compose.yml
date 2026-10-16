@@ -1,0 +1,48 @@
+# Two services, one project:
+#   gpu  -> real runs on an NVIDIA host (needs NVIDIA Container Toolkit)
+#   cpu  -> local dev on a Mac / CPU-only host (smoke tests, code checks)
+#
+# Usage:
+#   docker compose run --rm gpu   python -m src.run_baseline --split dev --method diffalign
+#   docker compose run --rm cpu   python -m src.run_baseline --split dev --method diffalign --limit 2
+#
+# The hf-cache volume persists downloaded models/datasets across runs so you
+# don't re-download Apertus every time.
+
+services:
+  gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: swissgov-rsd:gpu
+    environment:
+      - APERTUS_MODEL=${APERTUS_MODEL:-swiss-ai/Apertus-v1.5-8B}
+      # Keep the test gate OFF by default; set to 1 only for the final run.
+      - SWISSGOV_ALLOW_TEST=${SWISSGOV_ALLOW_TEST:-0}
+      - HF_TOKEN=${HF_TOKEN:-}
+    volumes:
+      - .:/app
+      - hf-cache:/cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    image: swissgov-rsd:cpu
+    environment:
+      - APERTUS_MODEL=${APERTUS_MODEL:-swiss-ai/Apertus-v1.5-8B}
+      - SWISSGOV_ALLOW_TEST=${SWISSGOV_ALLOW_TEST:-0}
+      - HF_TOKEN=${HF_TOKEN:-}
+    volumes:
+      - .:/app
+      - hf-cache:/cache/huggingface
+
+volumes:
+  hf-cache:

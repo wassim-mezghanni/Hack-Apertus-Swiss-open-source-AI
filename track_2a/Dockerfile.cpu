@@ -1,0 +1,26 @@
+# CPU-only image for local development on machines without an NVIDIA GPU
+# (e.g. a Mac). Lets you build, import, and run tiny `--limit` smoke tests
+# without CUDA. Full Apertus inference should run on the GPU image instead.
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    HF_HOME=/cache/huggingface
+
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+# Install the CPU build of torch to avoid pulling CUDA wheels on a CPU host.
+RUN python -m pip install --upgrade pip \
+    && python -m pip install torch --index-url https://download.pytorch.org/whl/cpu \
+    && python -m pip install -r requirements.txt
+
+COPY . .
+
+VOLUME ["/cache/huggingface"]
+
+CMD ["python", "-m", "src.run_baseline", "--split", "dev", "--method", "diffalign", "--limit", "2"]

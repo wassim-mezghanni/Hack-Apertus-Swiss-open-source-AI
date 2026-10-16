@@ -1,0 +1,99 @@
+{
+  "task": "SwissGov-RSD Token-Level Cross-Lingual Semantic Difference Recognition",
+  "track": "Track 2A (UZH) \u00b7 HackApertus 2026",
+  "model": "swiss-ai/Apertus-v1.5-8B",
+  "metric": "Token-level Spearman Correlation (Macro-Averaged across EN-DE, EN-FR, EN-IT)",
+  "evaluator": "ZurichNLP/SwissGov-RSD official evaluate_predictions_admin.py",
+  "kpis": {
+    "macro_spearman": 0.2553,
+    "macro_taub": 0.2047,
+    "spearman_de": 0.288,
+    "spearman_fr": 0.173,
+    "spearman_it": 0.305,
+    "improvement_over_published": "+64.7%",
+    "latency_ms": 148,
+    "speedup_vs_prompting": "50x",
+    "peak_vram_gb": 16.5,
+    "dev_pairs_evaluated": 504
+  },
+  "baselines": [
+    {
+      "name": "Open-Weight LLMs (Few-Shot Prompting)",
+      "family": "LLaMA-3 / Mistral-7B",
+      "approach": "Prompting (In-context learning)",
+      "de": 0.01,
+      "fr": 0.02,
+      "it": 0.02,
+      "macro_spearman": 0.017,
+      "macro_taub": 0.013,
+      "latency_ms": 8200,
+      "status": "Published Baseline",
+      "badge": "Failed Baseline"
+    },
+    {
+      "name": "GPT-4o (Few-Shot Prompting)",
+      "family": "OpenAI GPT-4o",
+      "approach": "Prompting (Structured JSON output)",
+      "de": 0.04,
+      "fr": 0.04,
+      "it": 0.04,
+      "macro_spearman": 0.04,
+      "macro_taub": 0.031,
+      "latency_ms": 6400,
+      "status": "Published Baseline",
+      "badge": "Commercial LLM"
+    },
+    {
+      "name": "Best Published DiffAlign",
+      "family": "XLM-R + SimCSE / Qwen3",
+      "approach": "Unsupervised Encoder Hidden States",
+      "de": 0.155,
+      "fr": 0.15,
+      "it": 0.16,
+      "macro_spearman": 0.155,
+      "macro_taub": 0.124,
+      "latency_ms": 220,
+      "status": "Prior Literature SOTA",
+      "badge": "Prior SOTA"
+    },
+    {
+      "name": "Apertus-8B (DiffAlign, Layer 31, Uncentered)",
+      "family": "Apertus-v1.5-8B",
+      "approach": "Output Layer Hidden States (Raw)",
+      "de": 0.073,
+      "fr": 0.06,
+      "it": 0.1,
+      "macro_spearman": 0.0777,
+      "macro_taub": 0.0617,
+      "latency_ms": 148,
+      "status": "Ablation",
+      "badge": "Uncentered"
+    },
+    {
+      "name": "Apertus-8B (DiffAlign, Layer 31, Centered)",
+      "family": "Apertus-v1.5-8B",
+      "approach": "Output Layer + Mean-Centering",
+      "de": 0.172,
+      "fr": 0.112,
+      "it": 0.179,
+      "macro_spearman": 0.1543,
+      "macro_taub": 0.1233,
+      "latency_ms": 148,
+      "status": "Ablation (+98% gain)",
+      "badge": "Centered Last Layer"
+    },
+    {
+      "name": "Apertus-8B (DiffAlign, Layer 20, Centered) [OURS]",
+      "family": "Apertus-v1.5-8B",
+      "approach": "Layer 20 (62.5% Depth) + Mean-Centering",
+      "de": 0.288,
+      "fr": 0.173,
+      "it": 0.305,
+      "macro_spearman": 0.2553,
+      "macro_taub": 0.2047,
+      "latency_ms": 148,
+      "status": "Our Submission (New SOTA)",
+      "badge": "Winner / SOTA"
+    }
+  ]
+}

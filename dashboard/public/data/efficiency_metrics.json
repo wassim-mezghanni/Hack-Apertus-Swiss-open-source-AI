@@ -1,0 +1,32 @@
+{
+  "hardware": {
+    "node": "NVIDIA H100 GPU (80GB SXM5)",
+    "gpu": "1x NVIDIA H100 80GB SXM5",
+    "precision": "bfloat16 native",
+    "peak_vram_gb": 16.5,
+    "total_vram_gb": 80.0,
+    "vram_utilization_pct": 20.6
+  },
+  "runtime": {
+    "total_eval_time_sec": 74.8,
+    "doc_pairs_evaluated": 504,
+    "docs_per_sec": 6.74,
+    "latency_per_pair_ms": 148.4,
+    "per_language": {
+      "en_de_time_sec": 25.1,
+      "en_fr_time_sec": 24.6,
+      "en_it_time_sec": 25.1
+    }
+  },
+  "prompting_comparison": {
+    "method_a": "Generative LLM Prompting (Auto-regressive)",
+    "method_a_latency_s": 7.5,
+    "method_a_tokens_gen": 400,
+    "method_a_failures": "JSON parse errors, length mismatches, hallucinations",
+    "method_b": "DiffAlign Apertus-8B (Ours)",
+    "method_b_latency_s": 0.148,
+    "method_b_failures": "None (guaranteed 1:1 token alignment via subword pooling)",
+    "speedup": "50.5x faster",
+    "accuracy_gain": "6.4x higher Spearman correlation"
+  }
+}

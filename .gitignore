@@ -1,0 +1,67 @@
+# Cluster notes contain usernames / account info — keep private
+/Cluster/
+
+# Node.js / Vite (Dashboard)
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+.vite/
+**/.vite/
+*.local
+.env
+.env.*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Containers & Model/Data Caches (large, do not commit)
+*.sif
+hf-cache/
+**/hf-cache/
+**/hf_cache/
+.cache/
+**/.cache/
+track_2a/apertus.sif
+*.safetensors
+*.pt
+*.bin
+
+# Run artifacts & Large evaluation outputs
+track_2a/logs/
+**/logs/
+*.out
+*.err
+*.jsonl
+*.jsonl.jsonl
+*.tar.gz
+
+# OS / Editor / IDE
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Allow official submission archive

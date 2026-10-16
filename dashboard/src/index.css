@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import "tailwindcss";
+
+/* ── Scholarly Lens Design Tokens ── */
+@theme {
+  --color-surface-container-highest: #e1e3e4;
+  --color-primary-container: #ba0510;
+  --color-primary: #E30613;
+  --color-on-error: #ffffff;
+  --color-tertiary: #191c1d;
+  --color-on-tertiary-container: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-surface: #191c1d;
+  --color-primary-fixed-dim: #ffb4ab;
+  --color-surface-container-high: #e7e8e9;
+  --color-on-background: #191c1d;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-tint: #E30613;
+  --color-on-secondary: #ffffff;
+  --color-secondary-fixed: #fce4e4;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-container: #58676c;
+  --color-error: #ba1a1a;
+  --color-surface-variant: #e1e3e4;
+  --color-outline: #6f797c;
+  --color-tertiary-container: #006163;
+  --color-outline-variant: #bfc8cc;
+  --color-on-primary-fixed: #001f27;
+  --color-on-surface-variant: #3f484c;
+  --color-surface-container-lowest: #ffffff;
+  --color-secondary-container: #d5e5eb;
+  --color-secondary-fixed-dim: #b9c9cf;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary: #ffffff;
+  --color-inverse-on-surface: #f0f1f2;
+  --color-background: #f8f9fa;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-on-secondary-fixed-variant: #3a494e;
+  --color-on-tertiary-fixed-variant: #004f51;
+  --color-tertiary-fixed: #89f3f6;
+  --color-on-primary-fixed-variant: #004e5f;
+  --color-inverse-primary: #8bd1e8;
+  --color-surface: #f8f9fa;
+  --color-secondary: #526166;
+  --color-on-tertiary-fixed: #002021;
+  --color-inverse-surface: #2e3132;
+  --color-tertiary-fixed-dim: #6bd7da;
+  --color-surface-dim: #d9dadb;
+  --color-on-primary-container: #ffffff;
+  --color-primary-fixed: #ffdad6;
+  --color-on-secondary-fixed: #0f1e22;
+
+  --font-family-headline: 'Manrope', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-label: 'Inter', sans-serif;
+}
+
+/* ── Base ── */
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+}
+
+/* ── Material Symbols ── */
+.material-symbols-outlined, .icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Glass Panel ── */
+.glass-panel {
+  background: rgba(248, 249, 250, 0.8);
+  backdrop-filter: blur(16px);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-container-low); }
+::-webkit-scrollbar-thumb { background: var(--color-outline-variant); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+/* ── Dot Grid Pattern ── */
+.dot-grid {
+  background-image: radial-gradient(var(--color-primary) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
